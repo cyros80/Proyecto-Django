@@ -1,0 +1,74 @@
+{% extends "inicio/encabezado.html" %}
+
+<!--Bloque de titulo-->
+{% block titulo %} 
+
+    Principal 
+
+{% endblock %}
+
+<!--Bloque de imagen-->
+{% block imagenes %}
+
+    {% load static %}
+    {% static 'inicio/images/home.png'%}
+
+{% endblock %}
+
+<!--Bloque de texto junto a la imagen-->
+{% block texto %}
+
+	<div class="user-info">
+		Principal <span>DSM</span>
+	</div>
+
+{% endblock %}
+
+{% block cabeza %} 
+	<div class="page-header">
+		<div class="page-title">
+			<h3>Comentarios
+		</div>
+	</div>
+{% endblock %}
+
+
+<!--Bloque de contenido-->
+{% block contenido %}
+			<!--Encabezdo -->
+			<div class="page-header">
+				<div class="page-title">
+				    <small>Comentarios</small></h3>
+				</div>
+			</div>
+			<!-- /Encabezado-->
+
+
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>Usuario</th>
+						<th>Mensaje</th>
+						
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					{% for comentario in comentarios %}
+
+					<tr>
+						
+						<td>{{comentario.usuario}}</td>
+						<td>{{comentario.mensaje}}</td>
+                        <td><a href="{%url 'Editar' comentario.id %}">Editar</a></td>
+                        <td><a href="{%url 'Eliminar' comentario.id %}">Eliminar</a></td>
+						
+					</tr>
+
+					{% endfor %}
+				</tbody>
+			</table>
+
+{% endblock %}

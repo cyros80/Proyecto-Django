@@ -1,0 +1,77 @@
+{% extends "inicio/encabezado.html" %}
+
+<!--Bloque de titulo-->
+{% block titulo %} 
+
+    Principal 
+
+{% endblock %}
+
+<!--Bloque de imagen-->
+{% block imagenes %}
+
+    {% load static %}
+    {% static 'inicio/images/home.png'%}
+
+{% endblock %}
+
+<!--Bloque de texto junto a la imagen-->
+{% block texto %}
+
+	<div class="user-info">
+		Principal <span>DSM</span>
+	</div>
+
+{% endblock %}
+
+{% block cabeza %} 
+	<div class="page-header">
+		<div class="page-title">
+			<h3>Alumnos
+		</div>
+	</div>
+{% endblock %}
+
+
+<!--Bloque de contenido-->
+{% block contenido %}
+			<!--Encabezdo -->
+			<div class="page-header">
+				<div class="page-title">
+				    <small>Lista de Alumnos 9A</small></h3>
+				</div>
+			</div>
+			<!-- /Encabezado-->
+
+
+			<table class="table table-bordered table-striped">
+				<thead>
+					<tr>
+						<th>Imagen</th>
+						<th>Matricula</th>
+						<th>Nombre</th>
+						<th>Carrera</th>
+						<th>Turno</th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+
+				<tbody>
+					{% for alumno in alumnos %}
+
+					<tr>
+						<td class="text-center"><img src="{{alumno.image.url}}" class="img-media"></td>
+						<td>{{alumno.matricula}}</td>
+						<td>{{alumno.nombre}}</td>
+						<td>{{alumno.carrera}}</td>
+						<td>{{alumno.turno}}</td>
+						<td><a href="{%url 'editarRegistro' alumno.matricula %}">Editar</a></td>
+                        <td><a href="{%url 'eliminarRegistro' alumno.matricula  %}">Eliminar</a></td>
+					</tr>
+
+					{% endfor %}
+				</tbody>
+			</table>
+
+{% endblock %}
