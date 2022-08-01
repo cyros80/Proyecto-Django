@@ -1,0 +1,50 @@
+{% extends "inicio/encabezado.html" %}
+
+<!--Bloque de titulo-->
+{% block titulo %} 
+
+    Eliminar 
+
+{% endblock %}
+
+<!--Bloque de imagen-->
+{% block imagenes %}
+
+    {% load static %}
+    {% static 'inicio/images/home.png'%}
+
+{% endblock %}
+
+<!--Bloque de texto junto a la imagen-->
+
+
+{% block cabeza %} 
+	<div class="page-header">
+		<div class="page-title">
+			<h3>Eliminar Registro
+		</div>
+	</div>
+{% endblock %}
+
+
+<!--Bloque de contenido-->
+{% block contenido %}
+			<!--Encabezdo -->
+			<div class="page-header">
+				<div class="page-title">
+				    <small>Eliminando Registro</small></h3>
+				</div>
+			</div>
+			<!-- /Encabezado-->
+            <form method="POST">
+                {% csrf_token%}
+                <div class="callout callout-danger fade in">
+                    <h5>Eliminando Registro</h5>
+                    <p>¿Estas seguro que deseas <strong>Eliminar</strong>el registro seleccionado?.</p>
+                </div>
+
+                <button type="submit" class="btn btn-danger">Si</button>
+                <a href="{% url 'Principal' %}" class="btn btn-primary">Cancelar</a>
+            </form>
+
+{% endblock %}
